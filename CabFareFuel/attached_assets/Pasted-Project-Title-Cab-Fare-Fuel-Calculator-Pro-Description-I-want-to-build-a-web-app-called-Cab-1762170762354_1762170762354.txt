@@ -1,0 +1,74 @@
+Project Title: Cab Fare & Fuel Calculator Pro
+
+Description:
+I want to build a web app called “Cab Fare Calculator Pro” that lets me calculate detailed ride fares, estimate fuel costs, and send receipts through Square.
+
+Features:
+
+1. Fare Input Fields
+   • Base Fare (default $7)
+   • Cost per Mile
+   • Cost per Minute
+   • Trip Distance (in miles)
+   • Trip Duration (in minutes)
+   • Fuel Type selector (Gasoline, Hybrid, EV)
+   • Average MPG (or kWh/mile for EV)
+   • Gas Price input (manual or fetched from API)
+   • Optional fuel surcharge (flat or per-mile)
+   • Dropdown to select fare model (Balanced, Premium, Budget)
+
+2. Fare Calculation Formula
+   baseTotal = baseFare + (distance * costPerMile) + (minutes * costPerMinute)
+   fuelCost = (distance / mpg) * gasPrice
+   if (fuelSurchargeType == "flat") baseTotal += fuelSurcharge
+   if (fuelSurchargeType == "perMile") baseTotal += distance * surchargeRate
+   totalFare = baseTotal + fuelCost
+   Display subtotal, fuel cost, and total clearly.
+
+3. Fuel Price Calculator
+   • Manual input or automatic lookup via API (EIA or GasBuddy)
+   • Toggle for “Use live fuel data” on/off
+   • Show current fuel price, estimated fuel cost per trip, and per-mile cost
+
+4. Square Integration
+   • Integrate with Square API to:
+       – Accept card payments for calculated fare totals
+       – Generate and email itemized receipts to riders
+       – Store transactions with date/time, trip details, and fare breakdown
+   • Use Square sandbox mode for testing, allow API key config later
+
+5. Itemized Receipt Display
+   Example:
+   ┌──────────────────────────┐
+   │ Cab Fare Receipt         │
+   ├──────────────────────────┤
+   │ Base Fare:          $7.00│
+   │ Distance (8 mi):   $16.00│
+   │ Time (20 min):      $7.00│
+   │ Fuel Surcharge:     $2.00│
+   │ Fuel Cost:          $3.60│
+   │──────────────────────────│
+   │ TOTAL:              $35.60│
+   └──────────────────────────┘
+   • Option to export to PDF or email after payment
+
+6. UI / UX
+   • Clean, single-page design using React + TailwindCSS
+   • Mobile-friendly layout
+   • Save last-used values in localStorage
+   • “Quick Presets” button for different fare zones (NYC, Westchester, etc.)
+
+7. Tech Stack
+   • Frontend: React + TailwindCSS
+   • Backend: Node.js / Express (for API calls and Square integration)
+   • APIs:
+       – Gas price API (EIA or GasBuddy)
+       – Square Payments + Receipts API
+
+8. Optional Extras
+   • Export ride history to CSV
+   • Chart comparing fare models
+   • Dark mode toggle
+
+Goal:
+A functional prototype that can run locally or on Replit, showing working fare and fuel cost calculations, with placeholders for future live gas and Square API integrations.
